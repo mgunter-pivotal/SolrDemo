@@ -5,7 +5,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@PropertySource("file:/home/daveburke/web/nixmashspring/mail.properties")
+@PropertySource("classpath:mail.properties")
 @ConfigurationProperties(prefix = "mail")
 public class MailSettings {
 

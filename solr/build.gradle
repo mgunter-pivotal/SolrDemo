@@ -24,6 +24,10 @@ jar {
 }
 
 dependencies {
+    compile 'org.springframework.cloud:spring-cloud-spring-service-connector:1.2.2.RELEASE'
+    // If you intend to deploy the app on Cloud Foundry, add the following
+    compile 'org.springframework.cloud:spring-cloud-cloudfoundry-connector:1.2.2.RELEASE'
+
 	compile 'org.springframework.boot:spring-boot-starter-data-solr'
 	compile ('org.apache.solr:solr-core:4.10.4') {
 		exclude(group: "org.slf4j", module: "slf4j-jdk14")

@@ -43,6 +43,7 @@ dependencies {
 	compile 'com.fasterxml.jackson.core:jackson-core:2.6.0'
 	compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
 	compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+	
 
 	//noinspection GroovyAssignabilityCheck
 	testCompile project(':jpa').sourceSets.test.output
@@ -51,7 +52,7 @@ dependencies {
 
 bootRun {
 	systemProperty 'server.port', '9000'
-	systemProperty 'spring.profiles.active', 'mysql,dev'
+//	systemProperty 'spring.profiles.active', 'mysql,dev'
 	args "--appurl=http://localhost:9000"
 	main = 'com.nixmash.springdata.mvc.common.Application'
 }

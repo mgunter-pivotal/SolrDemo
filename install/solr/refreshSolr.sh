@@ -32,13 +32,15 @@
 #
 # ------------------------------------------------------------------ */
 
-HTTP_COLLECTION=/ubuntuland/utils/solr-4.10.4/home/collections/nixmashspring
-HTTP_URL=http://solr/nixmashspring/update?commit=true
-EMBEDDED_COLLECTION=/home/daveburke/web/solr-4.10.4/collection1
+#HTTP_COLLECTION=/Users/mgunter/Documents/Projects/spring-data-solr-showcase/solr-4.10.4/example/example-schemaless/solr/collection1
+#HTTP_COLLECTION=/ubuntuland/utils/solr-4.10.4/home/collections/nixmashspring
+#HTTP_URL=http://solr/nixmashspring/update?commit=true
+HTTP_URL=http://kla.app.mgpcf.net/solr/knixcollection/update?commit=true
+#EMBEDDED_COLLECTION=/home/daveburke/web/solr-4.10.4/collection1
 
 # Clear existing index for Collection1 ----------------------------- */
 
-curl $HTTP_URL/update?commit=true  -H "Content-Type: text/xml" --data-binary '<delete><query>*:*</query></delete>'
+curl $HTTP_URL  -H "Content-Type: text/xml" --data-binary '<delete><query>*:*</query></delete>'
 
 # Populate Collection -------------------------------------------- */
 
@@ -48,7 +50,7 @@ java -Durl=$HTTP_URL -jar post.jar docs/*.xml
 
 # Delete Embedded Collection and Copy from Http --------------------- */
 
-rm -rf $EMBEDDED_COLLECTION/data
-cp -r $HTTP_COLLECTION/data/ $EMBEDDED_COLLECTION/data/
+#rm -rf $EMBEDDED_COLLECTION/data
+#cp -r $HTTP_COLLECTION/data/ $EMBEDDED_COLLECTION/data/
 
 

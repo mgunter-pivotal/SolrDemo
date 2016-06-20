@@ -5,7 +5,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@PropertySource("file:/home/daveburke/web/nixmashspring/solr.properties")
+@PropertySource("classpath:solr.properties")
 @ConfigurationProperties(prefix="solr")
 public class SolrSettings {
 
