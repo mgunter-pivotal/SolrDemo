@@ -3,8 +3,8 @@ package com.nixmash.springdata.solr.config;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;
-import org.springframework.cloud.config.java.CloudScan;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
@@ -15,18 +15,18 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.data.solr.server.support.HttpSolrServerFactoryBean;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.nixmash.springdata.solr.common.SolrSettings;
 import com.nixmash.springdata.solr.repository.SolrServer;
 import com.nixmash.springdata.solr.repository.simple.SimpleProductRepository;
 
+
+
 @Configuration
-@CloudScan
-public class HttpSolrContext implements
-EnvironmentAware, ApplicationListener<ApplicationEnvironmentPreparedEvent> {
+public class HttpSolrContext implements ApplicationListener<ApplicationEnvironmentPreparedEvent> {
 
-
-	@Resource
-	private Environment environment;
+	@Value("${vcap.services.MySolrInstance.credentials.SolrEndpoint}")
+	String solrEndpoint;
 	
 	@Autowired
 	private SolrSettings solrSettings;
@@ -35,9 +35,10 @@ EnvironmentAware, ApplicationListener<ApplicationEnvironmentPreparedEvent> {
 	
 	@Bean(name = "solrServer")
 	public HttpSolrServerFactoryBean solrServerFactoryBean() {
+		
 		HttpSolrServerFactoryBean factory = new HttpSolrServerFactoryBean();
 		factory.setUrl(solrSettings.getSolrServerUrl());
-		System.out.println("here is what env1 has"+ environment.getProperty("vcap.services.mysolr.credentials.solrendpoint"));
+		System.out.println("here is what env1 has"+ solrEndpoint);
 		return factory;
 	}
 
@@ -60,18 +61,8 @@ EnvironmentAware, ApplicationListener<ApplicationEnvironmentPreparedEvent> {
 	 
 		
 	}
-	public void VcapPropertyLoaderListener() {
-	//	ConfigurableEnvironment env= event.getEnvironment();
-		System.out.println("here is what env3 has in the listener"+ environment.getProperty("vcap.services.mysolr.credentials.solrendpoint"));
-		
-	}
 
-	@Override
-	public void setEnvironment(Environment environment) {
-		this.environment= environment;
-		System.out.println("here is what env4 has in the listener"+ environment.getProperty("vcap.services.mysolr.credentials.solrendpoint"));
-		
-	}
+	
 	
 
 

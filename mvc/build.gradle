@@ -8,7 +8,13 @@ sourceSets {
 	test { java.srcDir 'src/test/java' }
 }
 
+repositories {
+    jcenter()
+}
+
 configurations { providedRuntime }
+
+
 
 dependencies {
 	compile project(':jpa')
@@ -43,11 +49,15 @@ dependencies {
 	compile 'com.fasterxml.jackson.core:jackson-core:2.6.0'
 	compile 'com.fasterxml.jackson.core:jackson-databind:2.6.0'
 	compile 'org.codehaus.jackson:jackson-core-asl:1.9.13'
+	compile 'com.googlecode.json-simple:json-simple:1.1.1'
+	
 	
 
 	//noinspection GroovyAssignabilityCheck
 	testCompile project(':jpa').sourceSets.test.output
 	testCompile project(':mail').sourceSets.test.output
+    
+
 }
 
 bootRun {
