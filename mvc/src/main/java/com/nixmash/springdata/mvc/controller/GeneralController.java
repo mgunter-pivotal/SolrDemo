@@ -47,9 +47,9 @@ public class GeneralController {
 
     @RequestMapping(value = "/", method = GET)
     public String home(Model model) {
-        String springVersion = webUI.parameterizedMessage("home.spring.version", SpringBootVersion.getVersion(), SpringVersion.getVersion());
-        model.addAttribute("springVersion", springVersion);
-        model.addAttribute("gitHubStats", webUI.getGitHubStats());
+      //  String springVersion = webUI.parameterizedMessage("home.spring.version", SpringBootVersion.getVersion(), SpringVersion.getVersion());
+       // model.addAttribute("springVersion", springVersion);
+      //  model.addAttribute("gitHubStats", webUI.getGitHubStats());
         return HOME_VIEW;
     }
 

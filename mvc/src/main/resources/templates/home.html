@@ -10,35 +10,7 @@
 <nav th:replace="fragments/navbar :: navbar('home')">Navbar</nav>
 <div th:replace="fragments/jumbotron :: .jumbotron">Home Page Jumbotron</div>
 
-<div th:if="${currentUser == null}" class="container">
-    <div class="row social-button-row">
-        <div class="col-lg-7">
-            <form name="fb_signin" id="fb_signin" th:action="@{/signin/facebook}" method="POST">
-                <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-                <input type="hidden" name="scope" value="email,user_posts,user_photos,user_friends"/>
-                <button type="submit" class="btn btn-facebook">
-                    <i class="fa fa-facebook"></i> | <span th:text="#{label.facebook.sign.in.button}">[Sign In with Facebook]</span>
-                </button>
-            </form>
-            <form id="tw_signin" th:action="@{/signin/twitter}" method="POST">
-                <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-                <button type="submit" class="btn btn-twitter">
-                    <i class="fa fa-twitter"></i> | <span th:text="#{label.twitter.sign.in.button}">[Sign In with Twitter]</span>
-                </button>
-            </form>
-            <form id="gl_signin" th:action="@{/signin/google}" method="POST">
-                <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
-                <input type="hidden" name="scope"
-                       value="https://www.googleapis.com/auth/plus.login
-						   					https://www.googleapis.com/auth/plus.me"/>
-                <button type="submit" class="btn btn-google">
-                    <i class="fa fa-google"></i> |
-                    <span th:text="#{label.google.sign.in.button}">[Sign In with Google]</span>
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
+
 
 <div th:if="${connectionWelcomeMessage}" class="container">
     <div th:with="provider=${currentUserConnection.providerId},

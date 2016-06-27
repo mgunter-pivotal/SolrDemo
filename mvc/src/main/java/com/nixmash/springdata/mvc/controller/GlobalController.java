@@ -35,8 +35,8 @@ public class  GlobalController {
 	public static final String SESSION_USER_CONNECTION = "MY_USER_CONNECTION";
 	private static final String DUPLICATE_POSTNAME_ERROR_MESSAGE_KEY = "post.duplicate.name.feedback.error";
 
-	@Autowired
-	WebUI webUI;
+	//@Autowired
+	//WebUI webUI;
 
 	@Autowired
 	private ApplicationSettings applicationSettings;
@@ -109,8 +109,8 @@ public class  GlobalController {
 	public ModelAndView handleGeoLocationException(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		String location = (String) request.getAttribute("location");
-		String msg = webUI.getMessage(LOCATION_ERROR_MESSAGE_KEY, location);
-		mav.addObject(LOCATION_ERROR_ATTRIBUTE, msg);
+		//String msg = webUI.getMessage(LOCATION_ERROR_MESSAGE_KEY, location);
+		// mav.addObject(LOCATION_ERROR_ATTRIBUTE, msg);
 		mav.setViewName(PRODUCT_MAP_VIEW);
 		return mav;
 	}

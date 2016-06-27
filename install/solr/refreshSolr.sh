@@ -35,7 +35,7 @@
 #HTTP_COLLECTION=/Users/mgunter/Documents/Projects/spring-data-solr-showcase/solr-4.10.4/example/example-schemaless/solr/collection1
 #HTTP_COLLECTION=/ubuntuland/utils/solr-4.10.4/home/collections/nixmashspring
 #HTTP_URL=http://solr/nixmashspring/update?commit=true
-HTTP_URL=http://kla.app.mgpcf.net/solr/knixcollection/update?commit=true
+HTTP_URL=http://kla.app.mgpcf.net/solr/user2collection/update?commit=true
 #EMBEDDED_COLLECTION=/home/daveburke/web/solr-4.10.4/collection1
 
 # Clear existing index for Collection1 ----------------------------- */
